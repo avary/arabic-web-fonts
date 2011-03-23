@@ -1,0 +1,36 @@
+!!! 5
+html
+    title مستودع خطوط الويب العربية
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js")
+    script
+        function updateFont() {
+            $("textarea#sample").css("font-family", $("select#fontselector").val());
+        }
+    style
+        - each fontinfo in fonts
+            @font-face {
+                font-family: fontinfo[0];
+                src: url('fontinfo[1]');
+            }
+    body
+        table: tr
+            td
+                div#selector Font Selector
+                select#fontselector(onchange="updateFont()")
+                  - fonts.forEach( function(fontinfo) {
+                      option= fontinfo[0]
+                  - })
+
+            td
+                textarea#sample 
+                  الخط العربي على الانترنت
+                  تستطيع تحرير هذا النص
+        style
+           td { vertical-align: top; }
+           div#selector { width: 300px; }
+           textarea#sample { 
+               width: 600px; height: 300px; padding: 15px; border-style: none;
+               font-size: 2em; text-align: center; direction: rtl; 
+               }
+
+
