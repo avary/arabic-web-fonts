@@ -1,17 +1,18 @@
 !!! 5
 html
-    title مستودع خطوط الويب العربية
-    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js")
-    script
-        function updateFont() {
-            $("textarea#sample").css("font-family", $("select#fontselector").val());
-        }
-    - each fontinfo in fonts
-        style
-            @font-face {
-                font-family: #{fontinfo[0]};
-                src: url('#{fontinfo[1]}');
+    head
+        title مستودع خطوط الويب العربية
+        script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js")
+        script
+            function updateFont() {
+                $("textarea#sample").css("font-family", $("select#fontselector").val());
             }
+        - each fontinfo in fonts
+            style
+                @font-face {
+                    font-family: #{fontinfo[0]};
+                    src: url('#{fontinfo[1]}');
+                }
     body
         table: tr
             td
