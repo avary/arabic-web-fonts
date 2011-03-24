@@ -33,7 +33,13 @@ app.get('/', function(req, res){
 app.get('/css', function(req, res){
     var names = keys(req.query);
     u.each(names, function(name) {
-        res.write("@font-face{ \n  font-family:" + name + "; \n  src: url('" + fonturl(req, name) + "'); \n}\n\n");
+        if(name in fonts) {
+            res.write("/*   " + name + "   */ \n");
+            res.write("@font-face{ \n  font-family: " + name + "; \n  src: url('" + fonturl(req, name) + "'); \n}\n\n");
+        }
+        else {
+            res.write("/* The font '" + name + "' is not in this repository! */ \n\n");
+        }
     });
     res.end();
 });
