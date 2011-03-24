@@ -7,19 +7,19 @@ html
             function updateFont() {
                 $("textarea#sample").css("font-family", $("select#fontselector").val());
             }
-        - each fontinfo in fonts
+        - each name in fontnames
             style
                 @font-face {
-                    font-family: #{fontinfo[0]};
-                    src: url('#{fontinfo[1]}');
+                    font-family: #{name};
+                    src: url('#{fonts[name]}');
                 }
     body
         table: tr
             td
                 div#selector Font Selector
                 select#fontselector(onchange="updateFont()")
-                  - fonts.forEach( function(fontinfo) {
-                      option= fontinfo[0]
+                  - fontnames.forEach( function(name) {
+                      option= name
                   - })
 
             td
