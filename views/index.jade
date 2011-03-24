@@ -13,7 +13,7 @@ html
                 $(btn).addClass("selected_button");
                 var root = location.protocol + '//' + location.host;
                 var url = encodeURI(root + "/css?" + name);
-                $("#code").text(url);
+                $("#code").text('<link rel="stylesheet" type="text/css" href="' + url + '">');
             }
         - each name in fontnames
             style
