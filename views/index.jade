@@ -29,14 +29,17 @@ html
                     | Select Font:
                     - each name in fontnames
                         div(class: "button", onclick="select_font('" + name + "', this)")
-                            =name
-
+                            table(width="100%"): tr
+                                td
+                                    =name
+                                td(dir="rtl")
+                                    div.preview(style="font-family:" + name) ابجد هوز
             td
                 textarea#sample 
                   الخط العربي على الانترنت
                   تستطيع تحرير هذا النص
         style
-           td { vertical-align: top; }
+           tr, td { vertical-align: top; }
            div#selector { direction: ltr; text-align: left; width: 300px; }
            div#selector .button { 
                margin: 8px; padding: 10px; 
@@ -48,6 +51,7 @@ html
                background-color: hsl(150, 40%, 93%);
                color: hsl(44, 80%, 10%);
                }
+           div.preview { text-align: right; }
            textarea#sample { 
                width: 600px; height: 200px; padding: 15px; border-style: none;
                font-size: 2em; text-align: center; direction: rtl; 
@@ -64,5 +68,4 @@ html
             $(document).ready(function(){
                 $($("div#selector .button").get(0)).click();
                 });
-
 
