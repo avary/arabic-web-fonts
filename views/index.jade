@@ -41,6 +41,8 @@ html
                font-size: 2em; text-align: center; direction: rtl; 
                }
         script
-            $(document).ready(updateFont);
+            $(document).ready(function(){
+                $($("div#selector .button").get(0)).click();
+                });
 
 
