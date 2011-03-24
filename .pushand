@@ -1,2 +1,2 @@
 #! /bin/bash
-phd $0 arabic-web-fonts fonts.hasenj.org
+phd $0 arabic-web-fonts arabic-web-fonts.webbyapp.com
