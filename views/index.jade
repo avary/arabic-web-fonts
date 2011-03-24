@@ -64,8 +64,22 @@ html
                 border: 1px solid silver;
                 background-color: hsl(100, 40%, 95%);
             }
+            footer { 
+                position: absolute; bottom: 20px; 
+                color: hsl(90, 10%, 60%);
+                font: normal 10px monospace;
+            }
+            footer a {
+                color: hsl(190, 40%, 60%);
+            }
         script
             $(document).ready(function(){
                 $($("div#selector .button").get(0)).click();
                 });
+        footer 
+           | by 
+           a(href="https://github.com/hasenj") hasen
+           |  | 
+           a(href="https://github.com/hasenj/arabic-web-fonts") code on github
+           div This service is in the alpha stage, don't use it in production just yet!
 
