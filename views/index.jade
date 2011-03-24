@@ -22,6 +22,7 @@ html
                     src: url('#{fonts[name]}');
                 }
     body
+        div#code 
         table: tr
             td
                 div#selector
@@ -34,7 +35,6 @@ html
                 textarea#sample 
                   الخط العربي على الانترنت
                   تستطيع تحرير هذا النص
-        div#code Code here
         style
            td { vertical-align: top; }
            div#selector { direction: ltr; text-align: left; width: 300px; }
@@ -53,8 +53,8 @@ html
                font-size: 2em; text-align: center; direction: rtl; 
                }
             div#code {
-                margin: 5 10%;
-                padding: 20px;
+                margin: 5px 10%;
+                padding: 10px;
                 color: hsl(120, 70%, 25%);
                 font: normal 15px monospace;
             }
