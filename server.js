@@ -9,6 +9,7 @@ var fonts = {
     "KacstBook": "KacstBook.ttf",
     "KacstOne": "KacstOne.ttf",
     "KacstPen": "KacstPen.ttf",
+    "Amiri": "amiri-regular.ttf",
     }
 
 fontnames = u.keys(fonts);
