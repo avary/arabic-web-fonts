@@ -37,7 +37,7 @@ app.get('/css', function(req, res){
     res.contentType("text/css");
     var names = u.keys(req.query);
     u.each(names, function(name) {
-        if(name in fonts) {
+        if(font_exists(name)) {
             res.write("/*   " + name + "   */ \n");
             res.write("@font-face { \n  font-family: '" + name + "'; \n  src: url('" + fonturl(req, name) + "'); \n}\n\n");
         }
