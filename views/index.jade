@@ -4,16 +4,20 @@ html
         title مستودع خطوط الويب العربية
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js")
         script
-            function set_font(name) {
-                $("textarea#sample").css("font-family", name);
+            function font_url(name) {
+                return encodeURI(location.protocol + '//' + location.host + "/css?" + name);
+            }
+            function font_link_code(name) {
+                return '<link rel="stylesheet" type="text/css" href="' + font_url(name) + '" />';
             }
             function select_font(name, btn) {
-                set_font(name);
+                // button management!!
                 $(".selected_button").removeClass("selected_button");
                 $(btn).addClass("selected_button");
-                var root = location.protocol + '//' + location.host;
-                var url = encodeURI(root + "/css?" + name);
-                $("#code").text('<link rel="stylesheet" type="text/css" href="' + url + '">');
+                // set code, style, etc
+                $(".linkcode").text(font_link_code(name));
+                $(".fontname_placeholder").text(name)
+                $("textarea#sample").css("font-family", name);
             }
         - each name in fontnames
             style
@@ -22,7 +26,7 @@ html
                     src: url('#{fonts[name]}');
                 }
     body
-        div#code 
+        div#code.linkcode
         table: tr
             td
                 div#selector
@@ -38,8 +42,25 @@ html
                 textarea#sample 
                   الخط العربي على الانترنت
                   تستطيع تحرير هذا النص
+                div#explain
+                    | لاستخدام الخط في موقعك، قم بادخال الكود اعلاه الى موقعك و استخدم الخط باسم
+                    br
+                    span.fontname_placeholder
+                    br
+                    | مثلا:
+                    pre: code
+                        span.linkcode
+                        |  
+                        | &lt;div style="font-family: <span class="fontname_placeholder"></span>">
+                        |    الخط العربي
+                        | &lt;/div>
+
+
+
+
         style
            tr, td { vertical-align: top; }
+           code, pre { direction: ltr; text-align: left; }
            div#selector { direction: ltr; text-align: left; width: 300px; }
            div#selector .button { 
                margin: 8px; padding: 10px; 
@@ -56,23 +77,28 @@ html
                width: 600px; height: 200px; padding: 15px; border-style: none;
                font-size: 2em; text-align: center; direction: rtl; 
                overflow: hidden;
-               }
-            div#code {
+           }
+           div#explain {
+               direction: rtl;
+               font-family: KacstBook;
+               text-align: center;
+           }
+           div#code {
                 margin: 5px 2%;
                 padding: 10px 4%;
                 color: hsl(120, 70%, 25%);
                 font: normal 15px monospace;
                 border: 1px solid silver;
                 background-color: hsl(100, 40%, 95%);
-            }
-            footer { 
+           }
+           footer { 
                 position: absolute; bottom: 20px; 
                 color: hsl(90, 20%, 44%);
                 font: normal 10px monospace;
-            }
-            footer a {
+           }
+           footer a {
                 color: hsl(190, 20%, 44%);
-            }
+           }
         script
             $(document).ready(function(){
                 $($("div#selector .button").get(0)).click();
